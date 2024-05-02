@@ -60,8 +60,18 @@ while time.time() < timeout:
             email.click()
             try:
                 confirmation_link_visible = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "CONFIRM EMAIL ADDRESS")))
+                time.sleep(5)
                 confirmation_link_visible.click()
+                print("link click for confirmation but before switch: ", driver.current_url)
+                #driver.switch_to.window(driver.window_handles[1])
+                #print("what page am i actually on right now?: ", driver.current_url)
+                page_load(driver)
                 driver.switch_to.window(driver.window_handles[1])
+                driver.get("https://secure.crunchyroll.com/freetrial/checkout/")
+                print("what page am i actually on right now?: ", driver.current_url)
+                driver.find_element(By.ID, "billing_card_number").send_keys("111")
+                driver.find_element(By.ID, "billing_cvv").send_keys("999")
+                driver.find_element(By.ID, "billing_zip_code").send_keys("98103")
                 found_email = True
                 print("email from crunchyroll found and clicked")
                 break
@@ -70,7 +80,6 @@ while time.time() < timeout:
 
     if found_email:
         break
-    time.sleep(10)
 
 if not found_email:
     print("Email not found within the time limit.")
