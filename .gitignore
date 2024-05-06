@@ -143,7 +143,3 @@ Thumbs.db
 
 # ADDITIONAL STUFF
 config.py
-test_collectcardinfo.py
-test_createburnercard.py
-test_crunchyrollmonthyearselection.py
-selenium_test.py
