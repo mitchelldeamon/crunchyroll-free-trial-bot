@@ -140,3 +140,6 @@ Thumbs.db
 # IDE Specific
 .idea/
 .vscode/
+
+# ADDITIONAL STUFF
+config.py
